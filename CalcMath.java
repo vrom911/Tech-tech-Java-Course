@@ -41,7 +41,7 @@ public class CalcMath {
 					case 1:
 						String op = expression.substring(cur_indx-1,cur_indx);
 						if (op.equals(")")) {
-							while ((!operators.empty() ) && !operators.peek().equals("(")) {	
+							while ((!operators.empty() && !nums.empty() ) && !operators.peek().equals("(")) {	
 								changeIteration(nums, operators);
 							}
 							operators.pop();
@@ -79,9 +79,8 @@ public class CalcMath {
 						System.out.println("Write correct math expression you want to solve");
 						break check_expression;
 				}
+				//remember last index (for numbers , because we have only char operations, but numbers can be 123 or 1.2 or .005)
 				last_indx = cur_indx;
-				
-				//if digit push to digits
 			}
 			if (operators.empty() && nums.size()==1) {
 				System.out.println(expression+" = " + nums.peek());
@@ -89,13 +88,6 @@ public class CalcMath {
 		} else {
 			System.out.println("Write correct math expression you want to solve");
 		}
-		// try {
-		// 	showpop(st);
-		// }
-
-		// catch (EmptyStackException e) {
-		// 	System.out.println("empty stack");
-		// }
 	}
 	
 	public static int getElement(String expression, int indx) {
@@ -126,10 +118,16 @@ public class CalcMath {
 
 	}
 	public static  void changeIteration(Stack nums, Stack operators) {
-		double last_num = (Double)(nums.pop());
-		double prev_num = (Double)(nums.pop());
-		double result = makeOperation(prev_num, last_num, (String)operators.pop());
-		nums.push( result );
+		try {
+			double last_num = (Double)(nums.pop());
+			double prev_num = (Double)(nums.pop());
+			double result = makeOperation(prev_num, last_num, (String)operators.pop());
+			nums.push( result );
+		}
+		catch(EmptyStackException er) {
+			System.out.println("Wrong input"); 
+		}
+		
 	}
 	public static boolean canIterate(Stack operators, int cur_oper_l){
 		if (!operators.empty()) {
