@@ -14,7 +14,7 @@ This is directory with Tasks from the course. There will be description for ever
     <li>* Multiplication</li>
     <li>/ Division</li>
     <li>() Brackets are also possible </li>
-    <li> Unary Operations
+    <li> Unary Operations</li>
   </ul>
   
   Some other features:<br>
@@ -27,14 +27,15 @@ This is directory with Tasks from the course. There will be description for ever
   <b>Finding Max Min and other operations with Arrays</b>
   <hr>
   <br>
-  In main function User need to input number of operation you'd like to run.
-    #1  Finds max and min of random array. Input - array's length.
-    #2  Finds max and min in each row of n-dimention array.
-    #3  #2 and change max and min of each row between each other.
-    #4 Exit. Stops running.
-
-Additional functions written :
-  * round(double num, int scale) - returns double rounded by scale numbers after the dot.
-  * maxMinArray(Array) - returns array of { index_of_max , index_of_min } of the given simple array
+  <ul>In main function User need to input number of operation you'd like to run.<br>
+    <li>#1  Finds max and min of random array. Input - array's length.</li>
+    <li>#2  Finds max and min in each row of n-dimention array.</li>
+    <li>#3  #2 and change max and min of each row between each other.</li>
+    <li>#4 Exit. Stops running.</li>
+  </ul>
+<br>
+Additional functions written :<br>
+  * <code>round(double num, int scale)</code> - returns double rounded by scale numbers after the dot.<br>
+  * <code>maxMinArray(Array)</code> - returns array of { index_of_max , index_of_min } of the given simple array<br>
 </p>
 <i>to be continued..</i>
