@@ -38,4 +38,19 @@ Additional functions written :<br>
   * <code>round(double num, int scale)</code> - returns double rounded by scale numbers after the dot.<br>
   * <code>maxMinArray(Array)</code> - returns array of { index_of_max , index_of_min } of the given simple array<br>
 </p>
+<h2>#3 Matrix Practice </h2>
+<p>
+  <b>Multiplication of two Matrix</b>
+  <hr>
+  <br>
+  Multiplication of Matrix of any dimentions(possible for operations)<br>
+ <b>Input:</b> 4 integers: dim of 1st matrix &dim of 2nd matrix<br>
+ <b>Output:</b> Matrix - result of computation.
+<br>
+Additional functions written :<br>
+  * <code>round(double num, int scale)</code> - returns double rounded by scale numbers after the dot.<br>
+  * <code>makeArray(int num1, int num2)</code> - returns random array of given dimentions<br>
+  * <code>multipl(double[][] a, double[][] b)</code> - returns array - result of multiplication of two args given<br>
+</p>
+
 <i>to be continued..</i>
