@@ -57,7 +57,10 @@ Additional functions written :<br>
   <b>Parsing all links of the given web-page</b>
   <hr>
   <br>
-  
+This programm reads the source of the web-page and finds all the links.
+<b>NOTE:</b> Won't find any <code> mailto</code> links which were specially securely generated with js still..<br>
+  <b>Input:</b> Valid URL string<br>
+  <b>Output:</b> List of all href links at the page + number of links of each type<br>
 <br>
 
 </p>
@@ -71,20 +74,20 @@ treats to keep them healthy.</b>
 	For more info about the task, please, visit <a href = ""> this link</a>.
   <br>
   <b>Input:</b> name of the file with basic data in the proper format<br>
-<em>Example</em>
-<code> 
-	zoo:<br>
-	steak:50<br>
-	enclosure:50<br>
-	hay:20<br>
-	celery:10<br>
-	lion:M,12,5<br>
-	bear:F,10,4<br>
-	playZookeeper:<br>
-</code>
+<em>Example</em><br>
+	<code>zoo:</code><br>
+	<code> steak:50</code><br>
+	<code> enclosure:50</code><br>
+	<code> hay:20</code><br>
+	<code> celery:10</code><br>
+	<code> lion:M,12,5</code><br>
+	<code> bear:F,10,4</code><br>
+	<code> playZookeeper:</code><br>
+<br>
  <b>Output:</b> Description of all activities at each Enclosure of each Zoo made by <strong> Animal or Zookeper</strong>. Continue till there is not empty (has animals) operatable Enclosure.
 <br>
-<b>NOTE:</b> Comments can be helpful for understanding every class/method/variable definition
+<b>NOTE:</b> Java Documentation created for this project and can be found in this folder<br>
+<b>NOTE:</b> OR Comments also can be helpful for understanding every class/method/variable definition<br>
 
 </p>
 

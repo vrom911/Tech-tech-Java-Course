@@ -1,36 +1,44 @@
 package zooproject;
 
+import animals.Animal;
 import static java.lang.Math.min;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Random;
 import java.util.Set;
 
 /**
- *
+ *The Zookeeper comes in three different types. There is a general Zookeeper,
+ * and two specialist Zookeepers called the PlayZookeeper and the PhysioZookeeper.
+ * 
+ * @version 1.0 Mar 11, 2016
  * @author Veronika Romashkina
  * @email    vrom911@gmail.com
- * @version 1.0 Mar 11, 2016
  * ZooProject
  * Class: Zookeeper
  */
 public class Zookeeper {
-    private ArrayList<Enclosure> enclosures = new ArrayList();  //  each zookeper can wark at one or more enclosures of one Zoo
-    protected int treatmentWay; //  treatment depends om zookeeper type
+    /** Each zookeper can work at one or more enclosures of one Zoo */
+    private ArrayList<Enclosure> enclosures = new ArrayList();
+    /** Treatment indicator shows if can do special play treatment (depends om zookeeper type) */
+    protected int treatmentWay;
 
     public Zookeeper() {
         this.treatmentWay = 0;
     }
-
+    /** @return list of Enclosures of this Zookeeper */
     public ArrayList<Enclosure> getEnclosures() {
         return enclosures;
     }
-    
-    
+    /** Check if this Enclosure is under our Zookeeper's scope
+     * @param enc - Enclosure to check
+     * @return  true if it Zookeeper's Enclosure  */
     public boolean zokeepersEnclosure(Enclosure enc) {
         return this.enclosures.contains(enc);
     }
+    /** Each month first thing to happen - Zookeper brings food in Encl storage
+     * @param enc  which of Zookeeper's Enclosures we're talking about
+     */
     public void putFoodInStorage(Enclosure enc) {
         if(this.zokeepersEnclosure(enc)) {
             if (enc.getStatus() != -1) {
@@ -69,31 +77,31 @@ public class Zookeeper {
             } 
         }
     }
+    /** Treatment of Animals. (depend of treatment level and animal type
+     * @param enc current Enclosure  */
     public void treatAnimal(Enclosure enc) {
-        // time for treatment
-        // only possible type of treatments
         int k = 2;
         int size = enc.getAnimals().size();
-        Set<Integer> generated = new HashSet<Integer>();
+        Set<Integer> generated = new HashSet<>();
         Random r = new Random();
         while (generated.size() < size) {
             generated.add(r.nextInt(size));
         }
         for (int i = 0; i < size && k != 0; i++) {
-            
-            if (enc.getAnimals().get((Integer) generated.toArray()[i]).getTreatLevel() == 0 ||  enc.getAnimals().get((Integer) generated.toArray()[i]).getTreatLevel() == this.treatmentWay) {
-                enc.getAnimals().get((Integer) generated.toArray()[i]).treat();
+            Animal a = enc.getAnimals().get((Integer) generated.toArray()[i]);
+            if (a.getTreatLevel() == 0 ||  a.getTreatLevel() == this.treatmentWay) {
+                a.treat();
                 k--;
             }
         }
     }
+    /** Each month should remove Waste animals do
+     * @param enc  current Enclosure*/
     public void aMonthPasses(Enclosure enc) {
-        // removes waste each month
         int removed = min(enc.getWaste(), 20); 
         enc.addWaste((-1) * removed);
         System.out.println("ZOOKEEPER: " +removed +" waste cleaned up. " + enc.getWaste() +" waste remain");
         this.treatAnimal(enc);
-        
     }
     
 }

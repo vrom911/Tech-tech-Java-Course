@@ -12,18 +12,18 @@ import java.util.logging.Logger;
 
 
 /**
- *
- * @author Veronika Romashkina
- * @email    vrom911@gmail.com
- * @version 1.0    Mar 11, 2016
- *  Zoo Project - for understanding classes in Java
  * Imitation of simplified life circle of the ZOO
  * Each Zoo has Foodstore, some Enclosures.
  * Each Enclosure has Foodstore, some Animals, Zookeeper
+ * @version 1.0    Mar 11, 2016
+ * @author Veronika Romashkina
+ * @email    vrom911@gmail.com
+ *  Zoo Project - for understanding classes in Java
  */
 public class ZooProject {
 
     public static void main(String[] args) {
+        
         // arrays for building ZOO from the data of txt file;
         ArrayList<Zoo> zoos = new ArrayList<>();
         ArrayList<Zookeeper> zookeepers = new ArrayList<>();
@@ -36,23 +36,25 @@ public class ZooProject {
             Scanner in = new Scanner(new File("myZoo.txt"));
             while (in.hasNextLine()) {
                 String str = in.nextLine();
-                System.out.println(str);     
-                if(str.split(":").length == 2) {
-                    if (str.split(":[ ]*")[0].toLowerCase().equals("enclosure")) {
+                System.out.println(str);  
+                String[] strSep = str.split(":[ ]*");
+
+                if(strSep.length == 2) {
+                    if (strSep[0].toLowerCase().equals("enclosure")) {
                         enclosures.add(new Enclosure());
                         zoos.get(zoos.size() - 1).addEnclosure(enclosures.get(enclosures.size() - 1));
                         
                         foodstores.add(new Foodstore());
                         enclosures.get(enclosures.size() - 1).setFoodstore(foodstores.get(foodstores.size() - 1));
-                        enclosures.get(enclosures.size() - 1).setWaste(Integer.parseInt(str.split(":[ ]*")[1]));
+                        enclosures.get(enclosures.size() - 1).setWaste(Integer.parseInt(strSep[1]));
                     }
                     else {
-                        if (foodstores.get(foodstores.size() - 1).validFood(str.split(":[ ]*")[0].toLowerCase())) {
-                            foodstores.get(foodstores.size() - 1).addFood(str.split(":[ ]*")[0].toLowerCase(), Integer.parseInt(str.split(":[ ]*")[1]));
+                        if (foodstores.get(foodstores.size() - 1).validFood(strSep[0].toLowerCase())) {
+                            foodstores.get(foodstores.size() - 1).addFood(strSep[0].toLowerCase(), Integer.parseInt(strSep[1]));
                         }
                         else {
-                            String[] ar = str.split(":[ ]*")[1].toLowerCase().split(",[ ]*");
-                            switch (str.split(":[ ]*")[0].toLowerCase()) {
+                            String[] ar = strSep[1].toLowerCase().split(",[ ]*");
+                            switch (strSep[0].toLowerCase()) {
                                 case "bear":
                                     enclosures.get(enclosures.size() - 1).addAnimal(new Bear(ar[0].charAt(0), Integer.parseInt(ar[1]), Integer.parseInt(ar[2]),enclosures.get(enclosures.size() - 1)));
                                     break;
@@ -85,8 +87,8 @@ public class ZooProject {
                               
                     }
                 }
-                else if(str.split(":").length == 1) {
-                    switch (str.split(":[ ]*")[0].toLowerCase()) {
+                else if(strSep.length == 1) {
+                    switch (strSep[0].toLowerCase()) {
                         case "zoo":
                             zoos.add(new Zoo());
                             foodstores.add(new Foodstore()); 
@@ -137,7 +139,7 @@ public class ZooProject {
 //        fs.addFood("celery", 10);
 //        encl.setFoodstore(fs);
         
-        // status -1 means all enclosures are empty
+        /**  status -1 means all enclosures are empty*/
         for( Zoo zoo : zoos) {
             while(zoo.getStatus() != -1) {
                 zoo.go();
