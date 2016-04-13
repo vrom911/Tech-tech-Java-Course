@@ -91,4 +91,11 @@ treats to keep them healthy.</b>
 
 </p>
 
+<h2>#6 ArrayList vs LinkedList </h2>
+<p>
+<b>Comparison the time of basic methods for <i>ArrayList</i> and <i>LinkedList</i> of Integers.</b><hr>
+<b>Output:</b> 
+<br>Below you can see the output of the programm in comfortable view. We compare <code>get()</code>, <code>set()</code>, <code>add()</code>, <code>remove()</code><br>
+<img src="https://raw.githubusercontent.com/vrom911/tech-tech_java_course/master/ListDemo/screenshot.png" alt="Computation result">
+<br>
 <i>to be continued..</i>
